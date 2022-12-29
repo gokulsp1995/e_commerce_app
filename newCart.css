@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+:root {
+    --dark: #6F6F6F; 
+    --darker: #515151;
+    --darkest: #000000;
+    --matteBlack: #2d2d2d;
+    --light: #D3D3D3;
+    --white:#f3f3f3;
+    --orange: #FBAF10;
+    --green: rgb(54, 143, 2);
+    --red: rgba(226, 45, 45, 0.725);
+}
+body {
+    background-color: darkslateblue;
+    color: var(--white);
+    font-family: roboto;
+    width: 90%;
+}
+#headDiv{
+    display: flex;
+    /* border: solid 2px red ; */
+    justify-content: space-between;
+}
+
+#cart-submit {
+    display: flex;
+    /* margin-right: 20px; */
+    font-weight: 600;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: none ;
+    height: 40px;
+    margin: auto 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+#cart-submit:hover {
+    background-color: var(--matteBlack);
+    color: var(--light);
+}
+section {
+    width: 255px;
+    margin: 5px 0;
+    /* border: solid 2px var(--white);*/
+}
+section img {
+    display: flex;
+    margin: auto;
+}
+
+.size-para {
+    margin-bottom: 3px;
+}
+
+.sizes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+    .sizes input {
+        /* appearance: none; */
+        display: none;
+    }
+.sizes label {
+    /* border: solid 1px var(--white); */
+    
+    margin: 3px;
+    padding: 1px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.sizes label:hover {
+    
+    background-color: var(--white);
+    color: var(--darker);
+    transition: 0.4s;
+    border-radius: 6px;
+}
+.cart {
+    display: flex;
+    justify-content: space-around;
+    margin: 5px;
+}
+.eachOfTheShoes {
+    margin: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+.eachOfTheShoes:hover {
+    /* background-color: var(--matteBlack); */
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.subBodyDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.shoeName {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 2px;
+}
+.addButton {
+    border: none;
+    font-weight: 700;
+    background-color: var(--green);
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.sizes input {
+    /* appearance: none; */
+    cursor: pointer;
+}
+
+.remButton {
+    border: none;
+    font-weight: 700;
+    background-color: var(--red);
+    font-size: 15px;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px;
+}
+.remButton:hover , .addButton:hover {
+    cursor: pointer;
+}
+
+.twoParts{
+    display: flex;
+}
+.cartItem {
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.cartItemsClass {
+    font-weight: 700;
+    font-size: 20px;
+}
+#bodyDiv {
+    display: flex;
+    flex-direction: row;
+}
+.shoeInCartDiv {
+    margin: 10px;
+}
+.gridValue {
+    min-width: 270px;
+    border: 2px solid black;
+}
+/* // mainCartList.style.display = "flex";
+        // mainCartList.style.flexWrap = "wrap";
+        // shoeCartDiv.style.minWidth = "270px";
+        // shoeCartDiv.style.maxWidth = "300px";
+        // shoeImage.style.marginLeft = "20px";
+        // mainCartList.style.gap = "10px"; */
+       
+#bodyDiv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.shoeImage {
+    margin-left: 16px;
+}
+.shoeCartDiv {
+    border: 2px solid #2d2d2d;
+    /* min-width: 300px; */
+    width: 30%;
+    /* height: 300px; */
+}
+.shoeNameParagraph {
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    /* padding: 10px; */
+}
+.shoeCostParagraph {
+    font-weight: 500;
+    text-align: center;
+}
+#nameAndCostAlign {
+    /* max-height: 50px; */
+}
+.shoeImage {
+    display: flex;
+    margin: auto;
+    /* margin-bottom: 100px; */
+    padding-bottom: 10px;
+    border: 2px solid red;
+}
