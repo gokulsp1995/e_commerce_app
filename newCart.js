@@ -9,17 +9,23 @@
 // if not, enable the add button
 // update the quantity each time for multiple add
 
-let addButtons = document.querySelectorAll(".addButton");
-let remButtons = document.querySelectorAll(".remButton");
+// let addButtons = document.querySelector(".addButton");
+// let remButtons = document.querySelectorAll(".remButton");
 let sizeChart = document.querySelectorAll(".sizes label"); 
 let shoeSection = document.querySelectorAll(".eachOfTheShoes");
 let checkButtons = document.querySelectorAll(".sizeRadio");
 let nameOfShoes = document.querySelectorAll(".shoeName");
 let cartItem = document.querySelector(".cartItem");
+
 let price = document.querySelector(".price");
 let imageOfShoe = document.querySelector(".shoeImage");
 let quantityInCart = document.createElement("p");
 let mainCartList = document.querySelector("#bodyDiv");
+
+
+//     ('click',(event)=>{
+//     anjali(event);
+// } );
 
 for ( let checkBtn of checkButtons) {
     checkBtn.addEventListener("click", () => { 
@@ -86,25 +92,18 @@ let shoeNamesArray = [
 //  1 array of object add 2 
 
     for ( let shoeNameArr in shoeNamesArray) {
-        console.log("forLoopRun");
-        console.log(shoeNameArr);
-        console.log(shoeNamesArray[shoeNameArr]);
+        // console.log(shoeNamesArray[shoeNameArr]);
         mainCartList.innerHTML += 
         `<div class="shoeCartDiv">
-            <div id="nameAndCostAlign">
-                <p class="shoeNameParagraph">${shoeNamesArray[shoeNameArr].name}</p>
-                <p class="shoeCostParagraph">Price: ${shoeNamesArray[shoeNameArr].cost}</p>
-            </div>    
-                <img class="shoeImage" src="${shoeNamesArray[shoeNameArr].src}" width="200px" alt="Image for shoe"/>
-            
-            <div class="cart">
-                    <button class="addButton">Add Item</button>
-                    <button class="remButton">Remove</button>
-            </div>
+            <p class="shoeNameParagraph">${shoeNamesArray[shoeNameArr].name}</p>
+            <p class="shoeCostParagraph">Price: ${shoeNamesArray[shoeNameArr].cost}</p>
+            <img class="shoeImage" src="${shoeNamesArray[shoeNameArr].src}" width="200px" alt="Image for shoe"/>
+            <button class="addButton">Add Item</button>
+            <button class="remButton">Remove</button>
         </div>`;
         // console.log(mainCartList);
-
-        // let shoeCartDiv = document.querySelector(".shoeCartDiv");
+       
+        let shoeCartDiv = document.querySelector(".shoeCartDiv");
         // let shoeNameParagraph = document.querySelector('.shoeNameParagraph');
         // let shoeCostParagraph = document.querySelector('.shoeCostParagraph');
         // let shoeImage = document.querySelector('.shoeImage');
@@ -126,53 +125,84 @@ let shoeNamesArray = [
         // max and min width , 
         // flex-gap
     }
-
     quantityInCart.classList.add("cartItemsClass");
     let count = 0;
-    
-    let createCartItem = () => {
-            let shoeInCartDiv = document.createElement("div");
-            shoeInCartDiv.classList.add("shoeInCartDiv")
-            let shoeInCart = document.createElement("p"); 
-            shoeInCart.classList.add("cartItemsClass");
-        // if ( cartItem.contains(shoeInCart) ) {
-            console.log(shoeInCart);
-            cartItem.appendChild(shoeInCartDiv); // Adds a common new div
-            shoeInCartDiv.appendChild(shoeInCart);   //Adds the item to the cart
-            for ( let eachShoeName of nameOfShoes) {
-                shoeInCart.textContent = eachShoeName.textContent;
-            }
-            console.log("Shoe Name: ", nameOfShoes.textContent);
-            cartItem.style.backgroundColor = "var(--matteBlack";
-            // console.log(createCartItem);
-            console.log("Shoe Name: ",shoeInCart.textContent)
-            count++;
-            quantityInCart.textContent = count;
-            cartItem.appendChild(quantityInCart);
-            console.log("add",count);
-        // }
-        // else if (cartItem.contains(shoeInCart)) {
-            count = count + 1;
-        // }
-    }
+
+    //  function createCartItem(e) {
+    //     // console.log("function: ", e);
+    //     if ( cartItem.contains(shoeInCart) ) {
+    //         count++;
+    //     }
+    //     else {
+    //         let shoeInCartDiv = document.createElement("div");
+    //         shoeInCartDiv.classList.add("shoeInCartDiv");
+    //         let shoeInCart = document.createElement("p"); 
+    //         shoeInCart.classList.add("cartItemsClass");
+    //         let imageInCart = document.createElement("img");
+    //         imageInCart.classList.add("imageInCart");
+        
+    //         cartItem.appendChild(shoeInCartDiv); // Adds a common new div
+    //         cartItem.style.backgroundColor = "var(--matteBlack";
+    //         cartItem.appendChild(quantityInCart);
+        
+    //         shoeInCartDiv.appendChild(shoeInCart);   //Adds the item to the cart
+    //         for ( let eachShoeName of nameOfShoes) {
+    //             shoeInCart.textContent = eachShoeName.textContent;
+    //         }
+    //         quantityInCart.textContent = count;
+    //     }
+    // }
+        let addButtons = document.querySelectorAll(".addButton");
+        let remButtons = document.querySelectorAll(".remButton");
+        for ( let addBtn of addButtons ) {
+            addBtn.addEventListener("click", (e) => {
+                createCartItem(e);
+                console.log("addBtn", e.target.parentElement);
+            });
+            // console.log("Add: ",count1++, " ",addBtn);
+        }
+
+        // for ( let addBtn of addButtons ) {
+        //     // console.log(addBtn);
+        //     addBtn.addEventListener("click", (e) => {
+        //         console.log("event console",e);
+        //         anjali(e);
+        //     });
+            // console.log("Add: ",count1++, " ",addBtn);
+            // }
+        function createCartItem(e) {
+            console.log("cart-event",e.target.parentElement);
+            let cartSelectReference = e.target.parentElement;
+            console.log("children of cart: ",cartSelectReference.children);
+            // let newDivInsideCart = document.createElement("div");
+            cartItem.innerHTML += `
+                <div class="newDivInsideCart">
+                    <p class="addedShoeNameParagraph"></p>
+                </div>
+            `;
+            let addedShoeNameParagraph = document.querySelector(".addedShoeNameParagraph");
+            addedShoeNameParagraph.textContent = "gokul0";
+            console.log("Name of the clicked shoe: ",cartSelectReference.firstChild);
+            console.log("Name inside clicked shoe: ",cartSelectReference.firstChild.textContent);
+        }   
+        // function anjali(e){
+        //     console.log("hello",e.target.parentElement);
+        // }   
     let removeCartItem = () => {
         if ( count >= 1 ) {
             count--;
             quantityInCart.textContent = count;
-            console.log("remove",count);
+            // console.log("remove",count);
         }
         else if (count === 0 || count < 1 ) {
             cartItem.replaceChildren();
             // shoeInCart.textContent = "";
             cartItem.style.backgroundColor = "transparent";
-            console.log(removeCartItem);
-            console.log("remove",count);
+            // console.log(removeCartItem);
+            // console.log("remove",count);
             }
         }
-for ( let addBtn of addButtons ) {
-    addBtn.addEventListener("click", createCartItem);
-}
-
 for ( let remBtn of remButtons ){
     remBtn.addEventListener("click", removeCartItem);
+    // console.log("Remove: ", count1++, remBtn);
 }

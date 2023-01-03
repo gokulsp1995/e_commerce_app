@@ -20,6 +20,7 @@ body {
     display: flex;
     /* border: solid 2px red ; */
     justify-content: space-between;
+    margin: 5px;
 }
 
 #cart-submit {
@@ -104,13 +105,14 @@ section img {
     margin: 2px;
 }
 .addButton {
+    display: flex;
     border: none;
     font-weight: 700;
     background-color: var(--green);
     font-size: 15px;
     border-radius: 4px;
     padding: 5px;
-    margin: 5px;
+    margin: auto;
 }
 
 .sizes input {
@@ -119,16 +121,18 @@ section img {
 }
 
 .remButton {
+    display: flex;
     border: none;
     font-weight: 700;
     background-color: var(--red);
     font-size: 15px;
     border-radius: 4px;
     padding: 5px;
-    margin: 5px;
+    margin: auto;
 }
 .remButton:hover , .addButton:hover {
     cursor: pointer;
+    opacity: 0.8;
 }
 
 .twoParts{
@@ -147,6 +151,7 @@ section img {
 #bodyDiv {
     display: flex;
     flex-direction: row;
+    border: 2px solid snow;
 }
 .shoeInCartDiv {
     margin: 10px;
