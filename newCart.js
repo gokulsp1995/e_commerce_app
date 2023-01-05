@@ -21,7 +21,7 @@ let price = document.querySelector(".price");
 let imageOfShoe = document.querySelector(".shoeImage");
 let quantityInCart = document.createElement("p");
 let mainCartList = document.querySelector("#bodyDiv");
-
+let cartHeading = document.getElementById("cartHeading");
 
 //     ('click',(event)=>{
 //     anjali(event);
@@ -90,7 +90,6 @@ let shoeNamesArray = [
     }
 ];
 //  1 array of object add 2 
-
     for ( let shoeNameArr in shoeNamesArray) {
         // console.log(shoeNamesArray[shoeNameArr]);
         mainCartList.innerHTML += 
@@ -98,13 +97,15 @@ let shoeNamesArray = [
             <p class="shoeNameParagraph">${shoeNamesArray[shoeNameArr].name}</p>
             <p class="shoeCostParagraph">Price: ${shoeNamesArray[shoeNameArr].cost}</p>
             <img class="shoeImage" src="${shoeNamesArray[shoeNameArr].src}" width="200px" alt="Image for shoe"/>
-            <button class="addButton">Add Item</button>
-            <button class="remButton">Remove</button>
+            <button class="addButton">ADD</button>
+            <button class="remButton">REMOVE</button>
         </div>`;
         // console.log(mainCartList);
-       
         let shoeCartDiv = document.querySelector(".shoeCartDiv");
-        // let shoeNameParagraph = document.querySelector('.shoeNameParagraph');
+        let shoeNameParagraph = document.querySelectorAll('.shoeNameParagraph');
+        
+        // console.log("shoeNameParagraph",count5++," ",`${shoeNamesArray[shoeNameArr].name}`);
+        
         // let shoeCostParagraph = document.querySelector('.shoeCostParagraph');
         // let shoeImage = document.querySelector('.shoeImage');
         // let brandName = shoeNamesArray[shoeNameArr].name;
@@ -152,12 +153,13 @@ let shoeNamesArray = [
     //         quantityInCart.textContent = count;
     //     }
     // }
+
         let addButtons = document.querySelectorAll(".addButton");
         let remButtons = document.querySelectorAll(".remButton");
         for ( let addBtn of addButtons ) {
             addBtn.addEventListener("click", (e) => {
                 createCartItem(e);
-                console.log("addBtn", e.target.parentElement);
+                // console.log("addBtn", e.target.parentElement);
             });
             // console.log("Add: ",count1++, " ",addBtn);
         }
@@ -170,34 +172,56 @@ let shoeNamesArray = [
         //     });
             // console.log("Add: ",count1++, " ",addBtn);
             // }
+            let addedShoeNameParagraph = document.querySelector(".addedShoeNameParagraph");
+            let countForQuant = 0;
+            let arrForParagraphs = [];
+
         function createCartItem(e) {
-            console.log("cart-event",e.target.parentElement);
+            // console.log("cart-event",e.target.parentElement);
             let cartSelectReference = e.target.parentElement;
-            console.log("children of cart: ",cartSelectReference.children);
+            // console.log("children of cart: ",cartSelectReference.children);
             // let newDivInsideCart = document.createElement("div");
+            
+            // if ( `${cartSelectReference.children[0].textContent}` === )
+            if ( arrForParagraphs.includes(cartSelectReference.children[0].textContent)){
+                
+                countForQuant = countForQuant + 1;
+                console.log("countForQuantFor Repeat",countForQuant);
+                
+            }
+            else if ( !arrForParagraphs.includes(cartSelectReference.children[0].textContent)){
+                countForQuant++;
             cartItem.innerHTML += `
                 <div class="newDivInsideCart">
-                    <p class="addedShoeNameParagraph"></p>
+                    <p class="addedShoeNameParagraph">${cartSelectReference.children[0].textContent}</p>
+                    <p class="addedShoeQuantity">Quantity: <span>${countForQuant}</span></p>
+                    <p class="addedShoeCost">${cartSelectReference.children[1].textContent}</p>
+                    <img class="addedShoeNameImage" src="${cartSelectReference.children[2].src}" width="100px"/>
                 </div>
             `;
-            let addedShoeNameParagraph = document.querySelector(".addedShoeNameParagraph");
-            addedShoeNameParagraph.textContent = "gokul0";
-            console.log("Name of the clicked shoe: ",cartSelectReference.firstChild);
-            console.log("Name inside clicked shoe: ",cartSelectReference.firstChild.textContent);
+            cartHeading.style.display = "block";
+            console.log("countForQuant",countForQuant);
+            arrForParagraphs.push(cartSelectReference.children[0].textContent);
+            console.log("arrForParagraphs",arrForParagraphs);
+            // console.log("Name of the clicked shoe: ",cartSelectReference.children);
+            // console.log("Name inside clicked shoe: ",cartSelectReference.children[0]);
+            }
         }   
+
         // function anjali(e){
         //     console.log("hello",e.target.parentElement);
         // }   
     let removeCartItem = () => {
-        if ( count >= 1 ) {
-            count--;
-            quantityInCart.textContent = count;
-            // console.log("remove",count);
+        if ( countForQuant >= 1 ) {
+            countForQuant--;
+            quantityInCart.textContent = countForQuant;
+            console.log("remove",countForQuant);
         }
-        else if (count === 0 || count < 1 ) {
+        else if (countForQuant === 0 ) {
             cartItem.replaceChildren();
             // shoeInCart.textContent = "";
-            cartItem.style.backgroundColor = "transparent";
+            cartItem.style.backgroundColor = "invisible";
+            cartHeading.style.display = "none";
             // console.log(removeCartItem);
             // console.log("remove",count);
             }
